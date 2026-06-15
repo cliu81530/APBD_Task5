@@ -1,0 +1,79 @@
+@HostAddress = http://localhost:5276
+
+GET {{HostAddress}}/api/Rooms
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/Rooms/2
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/Rooms/building/A
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/Rooms?/minCapacity=20
+Accept: application/json
+
+###
+
+
+POST {{HostAddress}}/api/Rooms
+Content-Type: application/json
+
+{
+  "name": "",
+  "buildingCode": "A",
+  "floor": 1,
+  "capacity": 20,
+  "hasProjector": true,
+  "isActive": true
+}
+
+####
+
+
+### delete exist room
+DELETE {{HostAddress}}/api/Rooms/2
+
+
+### Delete non existing room
+DELETE {{HostAddress}}/api/Rooms/9999
+
+####
+
+### Reservations
+GET {{HostAddress}}/api/Reservations/
+####
+
+
+GET {{HostAddress}}/api/Reservations/9999
+
+###
+GET {{HostAddress}}/api/Reservations?/status=confirmed
+###
+
+
+GET {{HostAddress}}/api/Reservations?roomId=999
+
+
+###
+PUT {{HostAddress}}/api/Reservations/1
+
+
+###
+POST {{HostAddress}}/api/Reservations
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "organizerName": "Anna Kowalska",
+  "topic": "REST Workshop",
+  "date": "2026-05-10",
+  "startTime": "2026-05-14T10:00:00",
+  "endTime": "2026-05-17T12:00:00",
+  "status": "confirmed"  
+}
